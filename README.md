@@ -1,4 +1,4 @@
-# Dev Container Features: Self Authoring Template
+# Dev Container Features
 
 This repo provides Dev Container Features I have authored.
 
