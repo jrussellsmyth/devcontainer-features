@@ -1,0 +1,7 @@
+{
+    "name": "Yarn Keyring Setup",
+    "id": "yarn-keyring",
+    "version": "1.0.0",
+    "description": "Installs the Yarn GPG keyring before other features run. Workaround for expired keyrings in devcontainers.",
+    "installsAfter": []
+}
