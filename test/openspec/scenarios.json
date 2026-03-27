@@ -1,0 +1,17 @@
+{
+    "github_copilot_tool_support": {
+        "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+        "features": {
+            "openspec": {
+                "toolSupport": "github-copilot"
+            }
+        }
+    },
+    "with_node_feature": {
+        "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+        "features": {
+            "ghcr.io/devcontainers/features/node:1": {},
+            "openspec": {}
+        }
+    }
+}

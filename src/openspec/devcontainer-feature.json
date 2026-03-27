@@ -1,0 +1,16 @@
+{
+    "name": "OpenSpec",
+    "id": "openspec",
+    "version": "1.0.0",
+    "description": "Installs the OpenSpec CLI and can initialize supported AI tool integrations in your workspace.",
+    "options": {
+        "toolSupport": {
+            "type": "string",
+            "default": "none",
+            "description": "Configure OpenSpec tool support in the workspace on first interactive shell. Use 'none', 'all', or a comma-separated list of supported IDs: amazon-q, antigravity, auggie, claude, cline, codex, codebuddy, continue, costrict, crush, cursor, factory, gemini, github-copilot, iflow, kilocode, kiro, opencode, pi, qoder, qwen, roocode, trae, windsurf."
+        }
+    },
+    "installsAfter": [
+        "ghcr.io/devcontainers/features/node"
+    ]
+}
