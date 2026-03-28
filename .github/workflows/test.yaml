@@ -14,6 +14,7 @@ jobs:
       matrix:
         features:
           - yarn-apt-publickey
+          - openspec
         baseImage:
           - mcr.microsoft.com/devcontainers/base:debian
           - mcr.microsoft.com/devcontainers/base:bookworm
@@ -35,6 +36,7 @@ jobs:
       matrix:
         features:
           - yarn-apt-publickey
+          - openspec
     steps:
       - uses: actions/checkout@v4
 
