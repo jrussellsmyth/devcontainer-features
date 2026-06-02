@@ -1,0 +1,13 @@
+{
+    "name": "Crush",
+    "id": "crush",
+    "version": "1.0.0",
+    "description": "Installs the Crush CLI, Charmbracelet's terminal-based AI coding assistant.",
+    "options": {
+        "version": {
+            "type": "string",
+            "default": "latest",
+            "description": "Version of Crush to install (default: latest)"
+        }
+    }
+}
