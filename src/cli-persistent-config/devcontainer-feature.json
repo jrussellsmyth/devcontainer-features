@@ -6,38 +6,8 @@
   "options": {},
   "mounts": [
     {
-      "source": "claude-code-config",
-      "target": "/var/lib/agent-configs/claude",
-      "type": "volume"
-    },
-    {
-      "source": "gemini-config",
-      "target": "/var/lib/agent-configs/gemini",
-      "type": "volume"
-    },
-    {
-      "source": "crush-config",
-      "target": "/var/lib/agent-configs/crush",
-      "type": "volume"
-    },
-    {
-      "source": "copilot-config",
-      "target": "/var/lib/agent-configs/copilot",
-      "type": "volume"
-    },
-    {
-      "source": "opencode-config",
-      "target": "/var/lib/agent-configs/opencode",
-      "type": "volume"
-    },
-    {
-      "source": "codex-config",
-      "target": "/var/lib/agent-configs/codex",
-      "type": "volume"
-    },
-    {
-      "source": "superpowers-config",
-      "target": "/var/lib/agent-configs/superpowers",
+      "source": "agent-configs",
+      "target": "/var/lib/agent-configs",
       "type": "volume"
     }
   ]
