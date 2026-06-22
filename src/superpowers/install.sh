@@ -26,8 +26,15 @@ link_target() {
   if [ -L "${dest}" ]; then
     return 0
   fi
+  if [ -d "${dest}" ]; then
+    for item in "${src}"/*; do
+      [ -e "${item}" ] || continue
+      ln -s "${item}" "${dest}/$(basename "${item}")" 2>/dev/null || true
+    done
+    return 0
+  fi
   if [ -e "${dest}" ]; then
-    rm -rf "${dest}"
+    mv "${dest}" "${dest}.bak-$(date +%s)" 2>/dev/null || rm -f "${dest}"
   fi
   mkdir -p "$(dirname "${dest}")"
   ln -s "${src}" "${dest}"
@@ -36,8 +43,11 @@ link_target "/usr/local/share/superpowers" "${USER_HOME}/.claude/plugins/superpo
 WORKSPACE_DIR="$PWD"
 if [ -d "${WORKSPACE_DIR}/.git" ] || [ -d "${WORKSPACE_DIR}/.devcontainer" ] || [ -f "${WORKSPACE_DIR}/devcontainer.json" ]; then
   link_target "/usr/local/share/superpowers/skills" "${WORKSPACE_DIR}/.gemini/skills"
+  link_target "/usr/local/share/superpowers/commands" "${WORKSPACE_DIR}/.gemini/commands"
   link_target "/usr/local/share/superpowers/skills" "${WORKSPACE_DIR}/.github/skills"
+  link_target "/usr/local/share/superpowers/prompts" "${WORKSPACE_DIR}/.github/prompts"
   link_target "/usr/local/share/superpowers/skills" "${WORKSPACE_DIR}/.opencode/skills"
+  link_target "/usr/local/share/superpowers/commands" "${WORKSPACE_DIR}/.opencode/command"
 fi
 EOF
   chmod +x /usr/local/bin/superpowers-init-workspace

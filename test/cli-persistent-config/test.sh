@@ -3,9 +3,10 @@ set -e
 source dev-container-features-test-lib
 
 check "profile hook exists" bash -lc "[ -f /etc/profile.d/cli-persistent-config.sh ]"
+check "cli-persistent-config-init is executable" bash -lc "[ -x /usr/local/bin/cli-persistent-config-init ]"
 
-# Source the hook to create links
-source /etc/profile.d/cli-persistent-config.sh
+# Run the initialization helper to create links
+bash -lc "cli-persistent-config-init"
 
 # Helper to verify link target and write permission
 verify_link() {

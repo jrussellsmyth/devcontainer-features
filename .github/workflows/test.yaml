@@ -16,6 +16,9 @@ jobs:
           - yarn-apt-publickey
           - openspec
           - crush
+          - antigravity-cli
+          - superpowers
+          - cli-persistent-config
         baseImage:
           - mcr.microsoft.com/devcontainers/base:debian
           - mcr.microsoft.com/devcontainers/base:bookworm
@@ -39,6 +42,9 @@ jobs:
           - yarn-apt-publickey
           - openspec
           - crush
+          - antigravity-cli
+          - superpowers
+          - cli-persistent-config
     steps:
       - uses: actions/checkout@v4
 
