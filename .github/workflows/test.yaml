@@ -15,6 +15,7 @@ jobs:
         features:
           - yarn-apt-publickey
           - openspec
+          - crush
         baseImage:
           - mcr.microsoft.com/devcontainers/base:debian
           - mcr.microsoft.com/devcontainers/base:bookworm
@@ -37,6 +38,7 @@ jobs:
         features:
           - yarn-apt-publickey
           - openspec
+          - crush
     steps:
       - uses: actions/checkout@v4
 
