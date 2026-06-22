@@ -21,6 +21,15 @@ check "github skills link created" bash -lc "[ -L /tmp/dummy-workspace/.github/s
 check "github prompts link created" bash -lc "[ -L /tmp/dummy-workspace/.github/prompts ]"
 check "opencode skills link created" bash -lc "[ -L /tmp/dummy-workspace/.opencode/skills ]"
 check "opencode command link created" bash -lc "[ -L /tmp/dummy-workspace/.opencode/command ]"
+
+# Positive Scenario: Inside a Workspace Subdirectory
+mkdir -p /tmp/dummy-workspace/src/sub
+cd /tmp/dummy-workspace/src/sub
+# Clear links from prior runs
+rm -rf ~/.claude/plugins/superpowers
+bash -lc "superpowers-init-workspace"
+check "claude plugin link created from subdirectory" bash -lc "[ -L ~/.claude/plugins/superpowers ]"
+check "gemini skills link created from subdirectory" bash -lc "[ -L /tmp/dummy-workspace/.gemini/skills ]"
 rm -rf /tmp/dummy-workspace
 
 # Negative Scenario: Outside a Workspace

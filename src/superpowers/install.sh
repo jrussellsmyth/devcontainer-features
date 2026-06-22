@@ -17,6 +17,19 @@ write_init_helper() {
 #!/bin/sh
 set -eu
 USER_HOME="${HOME:-/home/$(whoami)}"
+
+find_workspace_root() {
+  current_dir="$1"
+  while [ "${current_dir}" != "/" ]; do
+    if [ -d "${current_dir}/.git" ] || [ -d "${current_dir}/.devcontainer" ] || [ -f "${current_dir}/devcontainer.json" ]; then
+      echo "${current_dir}"
+      return 0
+    fi
+    current_dir="$(dirname "${current_dir}")"
+  done
+  return 1
+}
+
 link_target() {
   src="$1"
   dest="$2"
@@ -34,14 +47,16 @@ link_target() {
     return 0
   fi
   if [ -e "${dest}" ]; then
-    mv "${dest}" "${dest}.bak-$(date +%s)" 2>/dev/null || rm -f "${dest}"
+    mv "${dest}" "${dest}.bak-$(date +%s)"
   fi
   mkdir -p "$(dirname "${dest}")"
   ln -s "${src}" "${dest}"
 }
+
 link_target "/usr/local/share/superpowers" "${USER_HOME}/.claude/plugins/superpowers"
-WORKSPACE_DIR="$PWD"
-if [ -d "${WORKSPACE_DIR}/.git" ] || [ -d "${WORKSPACE_DIR}/.devcontainer" ] || [ -f "${WORKSPACE_DIR}/devcontainer.json" ]; then
+
+WORKSPACE_DIR="$(find_workspace_root "$PWD" 2>/dev/null || true)"
+if [ -n "${WORKSPACE_DIR}" ]; then
   link_target "/usr/local/share/superpowers/skills" "${WORKSPACE_DIR}/.gemini/skills"
   link_target "/usr/local/share/superpowers/commands" "${WORKSPACE_DIR}/.gemini/commands"
   link_target "/usr/local/share/superpowers/skills" "${WORKSPACE_DIR}/.github/skills"

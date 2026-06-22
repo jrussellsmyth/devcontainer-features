@@ -41,9 +41,9 @@ link_config() {
       else
         cp -an "${home_abs}/." "${target}/" 2>/dev/null || true
       fi
-      mv "${home_abs}" "${home_abs}.bak-$(date +%s)" 2>/dev/null || rm -rf "${home_abs}"
+      mv "${home_abs}" "${home_abs}.bak-$(date +%s)"
     else
-      mv "${home_abs}" "${home_abs}.bak-$(date +%s)" 2>/dev/null || rm -f "${home_abs}"
+      mv "${home_abs}" "${home_abs}.bak-$(date +%s)"
     fi
   fi
 
@@ -86,12 +86,12 @@ main() {
   log "Configuring system paths and permissions for user: ${CONTAINER_USER}"
   mkdir -p /var/lib/agent-configs
   chown -R "${CONTAINER_USER}:${CONTAINER_USER}" /var/lib/agent-configs 2>/dev/null || true
-  chmod 777 /var/lib/agent-configs
+  chmod 700 /var/lib/agent-configs
 
   for tool in claude gemini crush copilot opencode codex superpowers; do
     mkdir -p "/var/lib/agent-configs/${tool}"
     chown -R "${CONTAINER_USER}:${CONTAINER_USER}" "/var/lib/agent-configs/${tool}" 2>/dev/null || true
-    chmod -R 777 "/var/lib/agent-configs/${tool}"
+    chmod -R 700 "/var/lib/agent-configs/${tool}"
   done
 
   log "Writing initialization binaries and hooks"

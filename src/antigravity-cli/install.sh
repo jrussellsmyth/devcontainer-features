@@ -15,7 +15,7 @@ apt_install() {
 main() {
   log "Activating feature 'antigravity-cli'"
   log "Installing prerequisites"
-  apt_install ca-certificates curl gnupg2 tar
+  apt_install ca-certificates curl gnupg2 tar bash
   log "Downloading and running official installer"
   curl -fsSL https://antigravity.google/cli/install.sh | bash -s -- -d /usr/local/bin
   command -v agy >/dev/null 2>&1 || fail "agy CLI was not added to PATH."
