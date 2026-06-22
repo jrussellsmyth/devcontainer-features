@@ -1,0 +1,44 @@
+{
+  "name": "CLI Persistent Config",
+  "id": "cli-persistent-config",
+  "version": "1.0.0",
+  "description": "Automatically mounts and shares configurations, tokens, and history for agentic CLIs across container rebuilds.",
+  "options": {},
+  "mounts": [
+    {
+      "source": "claude-code-config",
+      "target": "/var/lib/agent-configs/claude",
+      "type": "volume"
+    },
+    {
+      "source": "gemini-config",
+      "target": "/var/lib/agent-configs/gemini",
+      "type": "volume"
+    },
+    {
+      "source": "crush-config",
+      "target": "/var/lib/agent-configs/crush",
+      "type": "volume"
+    },
+    {
+      "source": "copilot-config",
+      "target": "/var/lib/agent-configs/copilot",
+      "type": "volume"
+    },
+    {
+      "source": "opencode-config",
+      "target": "/var/lib/agent-configs/opencode",
+      "type": "volume"
+    },
+    {
+      "source": "codex-config",
+      "target": "/var/lib/agent-configs/codex",
+      "type": "volume"
+    },
+    {
+      "source": "superpowers-config",
+      "target": "/var/lib/agent-configs/superpowers",
+      "type": "volume"
+    }
+  ]
+}
