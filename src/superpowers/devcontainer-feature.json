@@ -1,7 +1,0 @@
-{
-  "name": "Superpowers Agentic Skills",
-  "id": "superpowers",
-  "version": "1.0.0",
-  "description": "Installs the Superpowers agentic skills framework to guide AI agents through TDD, planning, and brainstorming workflows.",
-  "options": {}
-}

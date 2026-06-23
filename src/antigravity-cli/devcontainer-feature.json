@@ -1,7 +1,0 @@
-{
-  "name": "Antigravity CLI",
-  "id": "antigravity-cli",
-  "version": "1.0.0",
-  "description": "Installs the Google Antigravity CLI (agy) tool system-wide to monitor and interact with AI agents.",
-  "options": {}
-}
